@@ -17,5 +17,12 @@ jobs:
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
           test-results-pdf: test-results/results.pdf
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: All the reports
+          path: |
+            test-results/
+            code-coverage/coverage.xml
 
           
