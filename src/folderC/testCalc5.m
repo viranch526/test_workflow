@@ -1,5 +1,5 @@
   
-classdef testCal5 < matlab.unittest.TestCase
+classdef testCalc5 < matlab.unittest.TestCase
     %TESTCALC Summary of this class goes here
     %   Detailed explanation goes here
     
