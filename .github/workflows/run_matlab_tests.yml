@@ -12,7 +12,7 @@ jobs:
       - name: Run tests and generate artifacts
         uses: matlab-actions/run-tests@v1
         with:
-          source-folder: src
+          source-folder: src/folderA; src/folderB
           select-by-folder: test/temp
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
