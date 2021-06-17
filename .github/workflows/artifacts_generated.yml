@@ -1,5 +1,5 @@
 name: Artifacts are generated
-on: [workflow_dispach]
+on: [workflow_dispatch]
 jobs:
   my-job:
     name: Generate Artifacts
