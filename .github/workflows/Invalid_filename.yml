@@ -1,8 +1,7 @@
-
 name: Artifacts Invalid filename
 on: 
   workflow_dispatch:
-  inputs:
+    inputs:
       Filename:
         description: 'Filename for the pdf report'     
         required: true
