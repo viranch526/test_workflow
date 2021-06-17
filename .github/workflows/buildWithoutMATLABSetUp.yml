@@ -1,4 +1,4 @@
-name: Artifacts generated
+name: Artifacts generated2
 on: [workflow_dispatch]
 jobs:
     Build_without_matlab_set_up:
