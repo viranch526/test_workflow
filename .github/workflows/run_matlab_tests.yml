@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v1
-        run: echo ${env:PATH}
+#         run: echo ${env:PATH}
         shell: powershell
         with:
             release: R2018b
