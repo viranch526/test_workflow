@@ -1,0 +1,31 @@
+name: Artifacts filter by Tags
+on: 
+  workflow_dispatch:
+    inputs:
+      Tag:
+        description: 'Tag for filtering the test'     
+        required: true
+
+      
+jobs:
+  my-job:
+    name: Filter by tags 
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          select-by-tag	: ${{ github.event.inputs.Tag }}
+# #           select-by-folder: test/temp
+          test-results-pdf: test-results/results.pdf
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: All the reports
+          path: |
+            test-results/
