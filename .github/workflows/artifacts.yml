@@ -24,3 +24,6 @@ jobs:
           path: |
             test-results/
             code-coverage/coverage.xml
+            
+# from https://api.github.com/repos/viranch526/test_workflow/actions/artifacts we can see if count is increased or not.            
+  
