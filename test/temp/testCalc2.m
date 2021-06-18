@@ -1,4 +1,4 @@
-classdef testCalc2 < matlab.unittest.TestCase
+classdef (TestTags = {'TestSquare'}) testCalc2 < matlab.unittest.TestCase
     %TESTCALC Summary of this class goes here
     %   Detailed explanation goes here
     
