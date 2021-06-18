@@ -1,0 +1,33 @@
+name: Artifacts Incorrect Path Name for filter Tests
+on: 
+  workflow_dispatch:
+    inputs:
+      Folder_for_tests:
+        description: 'Specify path for filtering the test starting from root of the repo'     
+        required: true
+
+      
+jobs:
+  my-job:
+    name: Incorrect folder name for filtering tests 
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          select-by-folder: ${{ github.event.inputs.Folder_for_tests }}
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+          test-results-pdf: test-results/results.pdf
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: All the reports
+          path: |
+            test-results/
+            code-coverage/
