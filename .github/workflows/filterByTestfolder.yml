@@ -9,7 +9,7 @@ on:
       
 jobs:
   my-job:
-    name: Filter by tags 
+    name: tests filter by folder 
     runs-on: ubuntu-latest 
     steps:
       - name: Check out repository
