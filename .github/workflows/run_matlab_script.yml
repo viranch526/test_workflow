@@ -7,10 +7,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Set up Dotnet
-        uses: actions/setup-dotnet@v1
-        with: 
-          dotnet-version: 3.1.301
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
 #       - name: Run script
 #         uses: matlab-actions/run-command@v1
 #         with:
