@@ -29,4 +29,6 @@ jobs:
 #           run: echo "Its a github hosted runner"
           
         - name: cli run
-          run: gh version
+          run: |
+            gh version
+            gh auth login
