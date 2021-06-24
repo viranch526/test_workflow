@@ -31,4 +31,5 @@ jobs:
         - name: cli run
           run: |
             gh version
-            echo "Home: ${HOME}"
+            echo "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" | gh auth login --with-token
+
