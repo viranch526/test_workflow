@@ -31,5 +31,5 @@ jobs:
         - name: cli run
           run: |
             gh version
-            echo "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" | gh auth login --with-token
+            echo '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' | gh auth login --with-token
 
