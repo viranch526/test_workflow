@@ -11,8 +11,9 @@ jobs:
         uses: matlab-actions/setup-matlab@v1
         with:
            release: R2020a
-      - bash: |
+      - name: Test the version
+        run: |
           set -e
           matlab -batch "assert(strcmp(version('-release'),'2020a'))"
-        displayName: Check matlab release
+
           
