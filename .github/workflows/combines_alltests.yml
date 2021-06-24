@@ -15,6 +15,7 @@ jobs:
         run: |
           set -e
           matlab -batch "assert(strcmp(version('-release'),'2020a'))"
+#         In this option run the whole script will be there. (We can use a seperate file too).
           
           
   my-job2:
