@@ -14,6 +14,20 @@ jobs:
       - name: Test the version
         run: |
           set -e
-          matlab -batch "assert(strcmp(version('-release'),'2020b'))"
+          matlab -batch "assert(strcmp(version('-release'),'2020a'))"
+          
+          
+  my-job2:
+    name: run command in MATLAB
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run Matlab command
+        uses: matlab-actions/run-command@v1
+        with:
+          command: "eval(\"a = 1+2\"); assert(a == 3); eval('b = 3+4'); assert(b == 7);"
 
           
