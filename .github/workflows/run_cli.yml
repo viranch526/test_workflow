@@ -31,5 +31,6 @@ jobs:
         - name: cli run
           run: |
             gh version
+            echo ${{secrets.GH_TOKEN}}
             gh gist list
 
