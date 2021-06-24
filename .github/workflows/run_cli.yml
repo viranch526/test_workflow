@@ -31,4 +31,4 @@ jobs:
         - name: cli run
           run: |
             gh version
-            gh auth login --with-tokem
+            gh auth login --with-token < token.txt
