@@ -31,4 +31,4 @@ jobs:
         - name: cli run
           run: |
             gh version
-            gh run view 959827059
+            echo "Home: ${HOME}"
