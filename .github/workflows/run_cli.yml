@@ -33,5 +33,5 @@ jobs:
             gh version
             echo ${{secrets.GH_TOKEN}}
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
-            gh run view 959837541 
+            gh workflow list 
 
