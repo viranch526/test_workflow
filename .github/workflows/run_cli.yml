@@ -35,6 +35,6 @@ jobs:
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
             gh repo clone Viranch526/test_workflow
             cd test_workflow
-            gh auth status
+            gh run view 959837541
             
 
