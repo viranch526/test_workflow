@@ -32,5 +32,6 @@ jobs:
           run: |
             gh version
             echo ${{secrets.GH_TOKEN}}
-            gh gist list
+            export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+         #   gh gist list
 
