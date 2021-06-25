@@ -32,6 +32,7 @@ jobs:
           run: |
             gh version
             echo ${{secrets.GH_TOKEN}}
-            export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
             gh workflow list 
+       ##   export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+            
 
