@@ -32,7 +32,9 @@ jobs:
           run: |
             gh version
             echo ${{secrets.GH_TOKEN}}
-            gh workflow list 
-       ##   export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+            export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+            gh clone Viranch526/test_workflow
+            cd test_workflow
+            gh auth status
             
 
