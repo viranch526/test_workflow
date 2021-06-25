@@ -33,5 +33,6 @@ jobs:
             gh version
             echo ${{secrets.GH_TOKEN}}
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+            echo ${{GITHUB_TOKEN}}
          #   gh gist list
 
