@@ -36,5 +36,5 @@ jobs:
             gh repo clone Viranch526/test_workflow
             cd test_workflow
             gh run view 959837541
-            
+            gh run view --job=2882598774
 
