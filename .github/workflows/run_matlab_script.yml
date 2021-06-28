@@ -19,4 +19,4 @@ jobs:
         with:
           path: ./package.json
       - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}"
+        run: echo "${{ steps.package.outputs.content.version }}"
