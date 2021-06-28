@@ -7,16 +7,16 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run script
-        uses: matlab-actions/run-command@v1
-        with:
-          command: myscript
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run script
+#         uses: matlab-actions/run-command@v1
+#         with:
+#           command: myscript
       - name: Read package.json
         id: package
         uses: juliangruber/read-file-action@v1
         with:
           path: ./package.json
       - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content.version }}"
+        run: echo "${{ steps.package.outputs.content }}"
