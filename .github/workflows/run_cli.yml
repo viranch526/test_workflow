@@ -39,4 +39,9 @@ jobs:
             cd test_workflow
             gh run view 959837541
             gh run view --job=2882598774 > logs.txt
+        - name: 'Upload Artifact'
+          uses: actions/upload-artifact@v2
+            with:
+              name: my-artifact
+              path: logs.txt
 
