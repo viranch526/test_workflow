@@ -34,7 +34,6 @@ jobs:
             echo ${{secrets.GH_TOKEN}}
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
             export GITHUB_WORKSPACE = './test'
-            echo ${{GITHUB_WORKSPACE}}
        #     gh repo clone Viranch526/test_workflow
        #     cd test_workflow
        #     gh run view 959837541
