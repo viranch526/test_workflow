@@ -33,6 +33,12 @@ jobs:
             gh version
             echo ${{secrets.GH_TOKEN}}
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+        - name: test logs
+          run : |
+            gh repo clone Viranch526/test_workflow
+            cd test_workflow
+            gh run view --job=2882598774
+     #       cd test_workflow
       #      export GITHUB_WORKSPACE='./test'
       #      gh repo clone Viranch526/test_workflow
      #       cd test_workflow
@@ -40,6 +46,7 @@ jobs:
      #       ls
       #      cat gh run view --job=2882598774 > logs.txt
         #   gh run view --job=2882598774 > logs.txt
+        
         - name: 'Upload Artifact'
           uses: actions/upload-artifact@v2
           with:
