@@ -38,8 +38,8 @@ jobs:
             env
             gh repo clone Viranch526/test_workflow
             cd test_workflow
-            echo "hwllo world" > logs.txt
-            gh run view --job=2882598774 > logs.txt
+            expr 3 + 7 > logs.txt
+        #   gh run view --job=2882598774 > logs.txt
         - name: 'Upload Artifact'
           uses: actions/upload-artifact@v2
           with:
