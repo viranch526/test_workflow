@@ -29,20 +29,21 @@ jobs:
 #           run: echo "Its a github hosted runner"
           
         - name: cli run
-          shell: bash
           run: |
             gh version
             echo ${{secrets.GH_TOKEN}}
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
-            export GITHUB_WORKSPACE='./test'
-            env
-            gh repo clone Viranch526/test_workflow
-            cd test_workflow
-            expr 3 + 7 > logs.txt
+      #      export GITHUB_WORKSPACE='./test'
+      #      gh repo clone Viranch526/test_workflow
+     #       cd test_workflow
+      #      pwd
+     #       ls
+      #      cat gh run view --job=2882598774 > logs.txt
         #   gh run view --job=2882598774 > logs.txt
         - name: 'Upload Artifact'
           uses: actions/upload-artifact@v2
           with:
             name: my-artifact
             path: logs.txt
+            
 
