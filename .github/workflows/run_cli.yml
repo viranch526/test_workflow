@@ -25,6 +25,6 @@ jobs:
             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
             gh repo clone Viranch526/test_workflow
             cd test_workflow
-            gh run view --job=2882598774 --log | grep Warning
+            gh run view --job=2882598774 --log | grep Ubuntu
             
 
