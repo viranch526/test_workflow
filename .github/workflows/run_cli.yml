@@ -29,6 +29,7 @@ jobs:
 #           run: echo "Its a github hosted runner"
           
         - name: cli run
+          shell: bash
           run: |
             gh version
             echo ${{secrets.GH_TOKEN}}
@@ -37,8 +38,7 @@ jobs:
             env
             gh repo clone Viranch526/test_workflow
             cd test_workflow
-            gh run view 959837541
-            touch logs.txt
+            echo "hwllo world" > logs.txt
             gh run view --job=2882598774 > logs.txt
         - name: 'Upload Artifact'
           uses: actions/upload-artifact@v2
