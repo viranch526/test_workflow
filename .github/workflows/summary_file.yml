@@ -23,8 +23,14 @@ jobs:
       - if: ${{ failure() }}
         name: The job has failed
         id: final_step1
+        shell: bash
         run: |
-          echo "Job1 is failed"
+          echo "Job1 is failed" > status.txt
+      - name: Upload status result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: status
+          path: status.txt
       - if: ${{ success() }}
         name: The job has succeeded
         id: final_step2
