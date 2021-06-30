@@ -26,7 +26,8 @@ jobs:
         shell: bash
         run: |
           echo "Job1 is failed" > status.txt
-      - name: Upload status result for job 1
+      - if: ${{ failure() }}
+        name: Upload status result for job 1
         uses: actions/upload-artifact@v2
         with:
           name: status
