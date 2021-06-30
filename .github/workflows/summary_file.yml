@@ -11,6 +11,7 @@ on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
+    continue-on-error: true 
     # Map a step output to a job output
     outputs:
       output1: ${{ steps.step1.outputs.test }}
