@@ -27,17 +27,30 @@ jobs:
         shell: bash
         run: |
           echo "Job1 is failed" > status.txt
-      - if: ${{ failure() }}
-        name: Upload status result for job 1
-        uses: actions/upload-artifact@v2
-        with:
-          name: status
-          path: status.txt
+#       - if: ${{ failure() }}
+#         name: Upload status result for job 1
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: status
+#           path: status.txt
       - if: ${{ success() }}
         name: The job has succeeded
         id: final_step2
         run: |
           echo "Job1 is succeeded"
+          
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - shell: bash
+        run: |
+          echo "Job2 is failed" >> status.txt
+      - name: Upload status result for job 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: status
+          path: status.txt
         
 #   job2:
 #     runs-on: ubuntu-latest
