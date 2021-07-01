@@ -1,7 +1,12 @@
 name: Run MATLAB Script on GitHub-Hosted Runner
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Enter the version'     
+        required: true 
 jobs:
-  my-job:
+  read_input_form_Json:
     name: Run MATLAB Script
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +18,8 @@ jobs:
 #         uses: matlab-actions/run-command@v1
 #         with:
 #           command: myscript
+
+# read input from a Json file.
       - id: set_var
         run: |
           content=`cat ./package.json`
@@ -22,3 +29,41 @@ jobs:
           echo "::set-output name=packageJson::$content"
       - run: |
           echo "${{fromJson(steps.set_var.outputs.packageJson).version}}"
+          exho "From other file-- ${{ github.event.inputs.version }}"
+
+
+# all the errors in the text file.
+  all_logs_in_file:
+    runs-on: ubuntu-latest
+    continue-on-error: true 
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
+    steps:
+      - id: step1
+        run: echo "::set-output name=test::hello"
+      - id: step2
+        run: echo "::set-output name=test::world"
+      - if: ${{ failure() }}            # if any step in this job is failed
+        name: The job has failed
+        id: final_step1
+        shell: bash
+        run: |
+          echo "Job1 is failed" > status.txt
+      - if: ${{ failure() }}           # we'll upload here and download the artifacts in next job for appending the content to the same file.
+        name: Upload status result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: status
+          path: status.txt
+      - if: ${{ success() }}
+        name: The job has succeeded
+        id: final_step2
+        run: |
+          echo "Job1 is succeeded" > status.txt
+      - if: ${{ failure() }}           # we'll upload here and download the artifacts in next job for appending the content to the same file.
+        name: Upload status result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: status
+          path: status.txt
