@@ -1,13 +1,6 @@
 name: Summary
-on: push
-# jobs:
-#     Summary_File:
-# #       strategy:
-# #             matrix:
-# #                 platform: [ubuntu-latest, ubuntu-18.04]
-#       runs-on: ubuntu-latest
-# #       continue-on-error: true
-#       steps:
+on: [workflow_dispatch]
+
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -27,12 +20,12 @@ jobs:
         shell: bash
         run: |
           echo "Job1 is failed" > status.txt
-#       - if: ${{ failure() }}
-#         name: Upload status result for job 1
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: status
-#           path: status.txt
+      - if: ${{ failure() }}
+        name: Upload status result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: status
+          path: status.txt
       - if: ${{ success() }}
         name: The job has succeeded
         id: final_step2
