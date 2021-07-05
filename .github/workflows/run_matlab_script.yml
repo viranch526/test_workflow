@@ -1,10 +1,7 @@
 name: Run MATLAB Script on GitHub-Hosted Runner
-on: 
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Enter the version'     
-        required: true 
+on: [workflow_dispatch]
+  
+ 
 jobs:
   read_input_form_Json:
     name: Run MATLAB Script
