@@ -13,6 +13,7 @@ jobs:
         - name: export the host
           run: |
            export GITHUB_HOSTED=${{matrix.platform == 'ubuntu-latest'}}
+           env
           
 #         - if: matrix.platform == 'ubuntu-latest'
 #           name: Install MATLAB          
