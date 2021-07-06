@@ -1,5 +1,5 @@
 name: Integration test cases
-on: push
+on: [workflow_dispatch]
 jobs:
     Build_fails_for_Invalid_command:
 #       strategy:
@@ -8,26 +8,13 @@ jobs:
       runs-on: ubuntu-latest
 #       continue-on-error: true
       steps:
-#         - name: cli run
-#           run: |
-#             gh version
-#             echo ${{secrets.GH_TOKEN}}
-#             export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
-        
-      #      export GITHUB_WORKSPACE='./test'        
-        - name: 'Upload Artifact'
-          uses: actions/upload-artifact@v2
-          with:
-            name: my-artifact
-            path: logs.txt
         - name: test logs
           run : |
-            export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
-            gh repo clone Viranch526/test_workflow
-            cd test_workflow
-            curl \
-                  -H "Accept: application/vnd.github.v3+json" \
-                  https://api.github.com/repos/viranch526/test_workflow/actions/artifacts
+            env
+      #      export GITHUB_TOKEN=${{secrets.GH_TOKEN}}
+     #   gh repo clone Viranch526/test_workflow
+        #    cd test_workflow
+
                   
         #    gh run view --job=2882598774 --log | grep Warning
             
