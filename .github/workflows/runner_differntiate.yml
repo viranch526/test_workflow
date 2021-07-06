@@ -28,5 +28,7 @@ jobs:
 #           run: echo "matrix platform is" ${{matrix.platform}} "and runner is" ${{runner}}
           
         - name: Check Envi
-          if: ${{ GITHUB_HOSTED == true }}
-          run: echo "Its a github hosted runner"
+          if: ${{ true }}
+          run: |
+            env
+            echo "Its a github hosted runner"
