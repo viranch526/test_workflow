@@ -5,7 +5,7 @@ jobs:
   job1:
     strategy:
           matrix:
-            runner: [run_matlab_script.yml, summary_file.yml]
+            runner: [ubuntu-latest, ubuntu-18.04]
     runs-on: ${{matrix.runner}}
     continue-on-error: true 
     # Map a step output to a job output
