@@ -1,5 +1,5 @@
 name: Run the main file using this
-on: push
+on: push   
 jobs:
   trigger_the_other_file:
     strategy:
