@@ -1,0 +1,26 @@
+name: All tests in one file
+on: [workflow_dispatch]
+  
+ 
+jobs:
+  Artifacts are generated:
+    name: Check if artifacts are generated
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: Check if artifacts are generated or not
+      - bash: |
+           set -e
+           grep -q testSquare test-results/results.xml
+           grep -1 sqNum code-coverage/coverage.xml
+
+    
