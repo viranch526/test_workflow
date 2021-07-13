@@ -18,7 +18,7 @@ jobs:
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
       - name: Check if artifacts are generated or not
-      - bash: |
+        run: |
            set -e
            grep -q testSquare test-results/results.xml
            grep -1 sqNum code-coverage/coverage.xml
