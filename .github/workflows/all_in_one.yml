@@ -21,6 +21,6 @@ jobs:
         run: |
            set -e
            grep -q testSquare test-results/results.xml
-           grep -1 sqNuma code-coverage/coverage.xml
+           grep -1 sqNum code-coverage/coverage.xml
 
     
