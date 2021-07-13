@@ -3,7 +3,7 @@ on: [workflow_dispatch]
   
  
 jobs:
-  Artifacts are generated:
+  Artifacts_are_generated:
     name: Check if artifacts are generated
     runs-on: ubuntu-latest
     steps:
