@@ -41,8 +41,8 @@ jobs:
       - name: check if all the tests are picked or not
         run: |
            set -e
-           grep -q testCalc1 test-results/results.xml
-           grep -q testCalc4 test-results/results.xml
+           grep -c testCalc1 test-results/results.xml
+           grep -c testCalc4 test-results/results.xml
 #           grep -q testCalc2 test-results/results.xml   this should not be picked as it has a tag
           
            
