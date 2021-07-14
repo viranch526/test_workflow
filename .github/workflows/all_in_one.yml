@@ -37,10 +37,10 @@ jobs:
           source-folder: src
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
-      - name: Check if artifacts are generated or not
+      - name: check if all the tests are picked or not
         run: |
            set -e
-           grep -q testCalc test-results/results.xml
+           grep -q testCalc5 test-results/results.xml
            grep -q testCalc2 test-results/results.xml
            grep -q testCalc4 test-results/results.xml
 
