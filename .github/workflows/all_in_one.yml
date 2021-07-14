@@ -20,7 +20,7 @@ jobs:
       - name: Check if artifacts are generated or not
         run: |
            set -e
-           grep -q sqNums code-coverage/coverage.xml
+           grep -q sqNum code-coverage/coverage.xml
 #           grep -q testSquare test-results/results.xml
            
 #   All_test_picked_with_No_test_folder_given:
