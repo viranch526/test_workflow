@@ -4,7 +4,7 @@ on: [workflow_dispatch]
  
 jobs:
   Artifacts_are_generated:
-    name: Check if artifacts are generated
+    name: job1
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -25,7 +25,7 @@ jobs:
 
            
   All_test_picked_with_No_test_folder_given:
-    name: All the tests are picked when no test folder is given
+    name: job2
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -48,7 +48,7 @@ jobs:
           
            
   Tests_can_be_filtered_by_tag:
-    name: Tests can be filtered by tag
+    name: job3
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -69,7 +69,7 @@ jobs:
            
            
   No_tests_are_picked_for_incorrect_tag:
-    name: No tests will be picked for incorrect tag
+    name: job4
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -92,7 +92,7 @@ jobs:
            
            
   Tests_can_be_filter_by_folder:
-    name: Tests can be filtered by folder
+    name: job5
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -112,7 +112,7 @@ jobs:
            grep -q testCalc2 test-results/results.xml
            
   No_tests_picked_for_incorrect_folder_path:
-    name: No tests are picked for incorrect folder path
+    name: job6
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
