@@ -42,8 +42,9 @@ jobs:
         run: |
            set -e
            grep -q testCalc1 test-results/results.xml
-           grep -q testCalc2 test-results/results.xml
            grep -q testCalc4 test-results/results.xml
+#           grep -q testCalc2 test-results/results.xml   this should not be picked as it has a tag
+          
            
   Tests_can_be_filtered_by_tag:
     name: Tests can be filtered by tag
