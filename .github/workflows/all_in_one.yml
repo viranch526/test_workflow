@@ -78,7 +78,7 @@ jobs:
         uses: matlab-actions/run-tests@v1
         with:
           source-folder: src
-          select-by-tag: TestSquareX 
+          select-by-tag: TestSquare 
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
       - name: No tests are picked for incorrect tag value
