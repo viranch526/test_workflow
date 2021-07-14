@@ -21,10 +21,10 @@ jobs:
         run: |
            set -e
            grep -q testSquare test-results/results.xml
-           grep -1 sqNum code-coverage/coverage.xml
+           grep -v sqNum code-coverage/coverage.xml
            
-  Artifacts_are_generated_2:
-    name: Check if artifacts are generated_2
+  All_test_picked_with_No_test_folder_given:
+    name: All the tests are picked when no test folder is given
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -40,7 +40,8 @@ jobs:
       - name: Check if artifacts are generated or not
         run: |
            set -e
-           grep -q testSquare test-results/results.xml
-           grep -1 sqNums code-coverage/coverage.xml
+           grep -q testCalc test-results/results.xml
+           grep -q testCalc2 test-results/results.xml
+           grep -q testCalc4 test-results/results.xml
 
     
