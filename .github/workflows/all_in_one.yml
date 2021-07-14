@@ -45,25 +45,49 @@ jobs:
 #            grep -q testCalc2 test-results/results.xml
 #            grep -q testCalc4 test-results/results.xml
            
-#   Tests_can_be_filtered_by_tag:
-#     name: Tests can be filtered by tag
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check out repository
-#         uses: actions/checkout@v2
-#       - name: Set up MATLAB
-#         uses: matlab-actions/setup-matlab@v1
-#       - name: Run tests and generate artifacts
-#         uses: matlab-actions/run-tests@v1
-#         with:
-#           source-folder: src
-#           select-by-tag: TestSquare 
-#           test-results-junit: test-results/results.xml
-#           code-coverage-cobertura: code-coverage/coverage.xml
-#       - name: check if tests are filtered by tag
-#         run: |
-#            set -e
-#            grep -q testCalc2 test-results/results.xml
+  Tests_can_be_filtered_by_tag:
+    name: Tests can be filtered by tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          select-by-tag: TestSquare 
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: check if tests are filtered by tag
+        run: |
+           set -e
+           grep -q testCalc2 test-results/results.xml
+           
+           
+  No_tests_are_picked_for_incorrect_tag:
+    name: No tests will be picked for incorrect tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          select-by-tag: TestSquareX 
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: No tests are picked for incorrect tag value
+        run: |
+           set -e
+           grep -c testCalc test-results/results.xml
+           grep -c testCalc2 test-results/results.xml
+           grep -c testCalc4 test-results/results.xml
+           
 
 
     
