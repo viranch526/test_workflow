@@ -43,5 +43,26 @@ jobs:
            grep -q testCalc5 test-results/results.xml
            grep -q testCalc2 test-results/results.xml
            grep -q testCalc4 test-results/results.xml
+           
+  Tests_can_be_filtered_by_tag:
+    name: Tests can be filtered by tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          select-by-tag: TestSquare 
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: check if tests are filtered by tag
+        run: |
+           set -e
+           grep -q testCalc2 test-results/results.xml
+
 
     
