@@ -153,6 +153,7 @@ jobs:
            grep -c testCalc2 test-results/results.xml
            grep -c sqNum code-coverage/coverage.xml
            grep -c mulNum code-coverage/coverage.xml
+           grep -c addNum code-coverage/coverage.xml
            grep -c testCalc1 test-results/results.xml
            
   Src_folder_and_tag_selection_work_together:
@@ -176,6 +177,7 @@ jobs:
            grep -c testCalc2 test-results/results.xml
            grep -c sqNum code-coverage/coverage.xml
            grep -c mulNum code-coverage/coverage.xml
+           grep -c addNum code-coverage/coverage.xml
            grep -c testCalc1 test-results/results.xml
 
            
