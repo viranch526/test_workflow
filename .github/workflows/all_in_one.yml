@@ -130,6 +130,53 @@ jobs:
         run: |
            set -e
            grep -q testCalc2 test-results/results.xml
+           
+           
+  Test_and_src_folder_selection_works_together:
+    name: job7
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src/folderA
+          select-by-folder: test/temp
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: Check that test ans source folder selection works together
+        run: |
+           set -e
+           grep -c testCalc2 test-results/results.xml
+           grep -c sqNum code-coverage/coverage.xml
+           grep -c mulNum code-coverage/coverage.xml
+           grep -c testCalc1 test-results/results.xml
+           
+  Src_folder_and_tag_selection_work_together:
+    name: job8
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src/folderA
+          select-by-tag: TestSquare
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: Check that src folder and tag selection works together
+        run: |
+           set -e
+           grep -c testCalc2 test-results/results.xml
+           grep -c sqNum code-coverage/coverage.xml
+           grep -c mulNum code-coverage/coverage.xml
+           grep -c testCalc1 test-results/results.xml
 
            
 
