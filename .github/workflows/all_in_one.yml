@@ -36,12 +36,12 @@ jobs:
         with:
           source-folder: src
           test-results-junit: test-results/r?esults.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-#       - name: Check if artifacts are generated or not
-#         run: |
-#            set -e
-#            grep -q testSquare test-results/results.xml
-
+          code-coverage-cobertura: code-coverage/co?verage.xml
+      - name: Check if artifacts are generated or not
+        run: |
+           set -e
+           grep -q testSquare test-results/r?esults.xml
+           grep -c sqNums code-coverage/co?verage.xml
            
 #   All_test_picked_with_No_test_folder_given:
 #     name: job2
