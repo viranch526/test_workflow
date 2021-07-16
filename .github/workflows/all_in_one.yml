@@ -41,7 +41,7 @@ jobs:
         run: |
            set -e
            grep -q testSquare test-results/r?esults.xml
-           grep -c sqNums code-coverage/co?verage.xml
+           grep -c sqNum code-coverage/co?verage.xml
            
 #   All_test_picked_with_No_test_folder_given:
 #     name: job2
