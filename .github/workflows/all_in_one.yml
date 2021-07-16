@@ -22,163 +22,182 @@ jobs:
            set -e
            grep -q testSquare test-results/results.xml
            grep -v sqNums code-coverage/coverage.xml
+           
+  Files_are_not_created_for_incorrect_name:
+    name: job9
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          test-results-junit: test-results/results!.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: Check if artifacts are generated or not
+#         run: |
+#            set -e
+#            grep -q testSquare test-results/results.xml
 
            
-  All_test_picked_with_No_test_folder_given:
-    name: job2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: check if all the tests are picked or not
-        run: |
-           set -e
-           grep -q testCalc1 test-results/results.xml
-           grep -q testCalc4 test-results/results.xml
-           grep -q testCalc2 test-results/results.xml   
-#          this should  be picked although it has a tag
+#   All_test_picked_with_No_test_folder_given:
+#     name: job2
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: check if all the tests are picked or not
+#         run: |
+#            set -e
+#            grep -q testCalc1 test-results/results.xml
+#            grep -q testCalc4 test-results/results.xml
+#            grep -q testCalc2 test-results/results.xml   
+# #          this should  be picked although it has a tag
           
            
-  Tests_can_be_filtered_by_tag:
-    name: job3
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src
-          select-by-tag: TestSquare 
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: check if tests are filtered by tag
-        run: |
-           set -e
-           grep -q testCalc2 test-results/results.xml
+#   Tests_can_be_filtered_by_tag:
+#     name: job3
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src
+#           select-by-tag: TestSquare 
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: check if tests are filtered by tag
+#         run: |
+#            set -e
+#            grep -q testCalc2 test-results/results.xml
            
            
-  No_tests_are_picked_for_incorrect_tag:
-    name: job4
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src
-          select-by-tag: TestSquareX
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: No tests are picked for incorrect tag value
-        run: |
-           set -e
-           grep -c testCalc1 test-results/results.xml
-           grep -c testCalc2 test-results/results.xml
-           grep -c testCalc4 test-results/results.xml
+#   No_tests_are_picked_for_incorrect_tag:
+#     name: job4
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src
+#           select-by-tag: TestSquareX
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: No tests are picked for incorrect tag value
+#         run: |
+#            set -e
+#            grep -c testCalc1 test-results/results.xml
+#            grep -c testCalc2 test-results/results.xml
+#            grep -c testCalc4 test-results/results.xml
            
            
-  Tests_can_be_filter_by_folder:
-    name: job5
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src
-          select-by-folder: test/temp
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: Check if tests can be filtered by folder
-        run: |
-           set -e
-           grep -q testCalc2 test-results/results.xml
+#   Tests_can_be_filter_by_folder:
+#     name: job5
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src
+#           select-by-folder: test/temp
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: Check if tests can be filtered by folder
+#         run: |
+#            set -e
+#            grep -q testCalc2 test-results/results.xml
            
-  No_tests_picked_for_incorrect_folder_path:
-    name: job6
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src
-          select-by-folder: test/tempp
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: Check that no tests are picked for incorrect folder path
-        run: |
-           set -e
-           grep -q testCalc2 test-results/results.xml
+#   No_tests_picked_for_incorrect_folder_path:
+#     name: job6
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src
+#           select-by-folder: test/tempp
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: Check that no tests are picked for incorrect folder path
+#         run: |
+#            set -e
+#            grep -q testCalc2 test-results/results.xml
            
            
-  Test_and_src_folder_selection_works_together:
-    name: job7
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src/folderA
-          select-by-folder: test/temp
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: Check that test ans source folder selection works together
-        run: |
-           set -e
-           grep -c testCalc2 test-results/results.xml
-           grep -c sqNum code-coverage/coverage.xml
-           grep -c mulNum code-coverage/coverage.xml
-           grep -c addNum code-coverage/coverage.xml
-           grep -c testCalc1 test-results/results.xml
+#   Test_and_src_folder_selection_works_together:
+#     name: job7
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src/folderA
+#           select-by-folder: test/temp
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: Check that test ans source folder selection works together
+#         run: |
+#            set -e
+#            grep -c testCalc2 test-results/results.xml
+#            grep -c sqNum code-coverage/coverage.xml
+#            grep -c mulNum code-coverage/coverage.xml
+#            grep -c addNum code-coverage/coverage.xml
+#            grep -c testCalc1 test-results/results.xml
            
-  Src_folder_and_tag_selection_work_together:
-    name: job8
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src/folderA
-          select-by-tag: TestSquare
-          test-results-junit: test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: Check that src folder and tag selection works together
-        run: |
-           set -e
-           grep -c testCalc2 test-results/results.xml
-           grep -c sqNum code-coverage/coverage.xml
-           grep -c mulNum code-coverage/coverage.xml
-           grep -c addNum code-coverage/coverage.xml
-           grep -c testCalc1 test-results/results.xml
+#   Src_folder_and_tag_selection_work_together:
+#     name: job8
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src/folderA
+#           select-by-tag: TestSquare
+#           test-results-junit: test-results/results.xml
+#           code-coverage-cobertura: code-coverage/coverage.xml
+#       - name: Check that src folder and tag selection works together
+#         run: |
+#            set -e
+#            grep -c testCalc2 test-results/results.xml
+#            grep -c sqNum code-coverage/coverage.xml
+#            grep -c mulNum code-coverage/coverage.xml
+#            grep -c addNum code-coverage/coverage.xml
+#            grep -c testCalc1 test-results/results.xml
 
            
 
