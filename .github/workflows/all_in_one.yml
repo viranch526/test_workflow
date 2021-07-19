@@ -4,11 +4,11 @@ on: [workflow_dispatch]
 jobs:
 
   Extract_data_from_data_properties_file:
-    strategy:
-          matrix:
-            runner: [ubuntu-latest, ubuntu-18.04]
+#     strategy:
+#           matrix:
+#             runner: [ubuntu-latest, ubuntu-18.04]
     name: Exctract_data_from_properties_file
-    runs-on: ${{matrix.runner}}
+    runs-on: self-hosted
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
