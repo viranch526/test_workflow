@@ -39,7 +39,7 @@ jobs:
            
   Files_are_not_created_for_incorrect_name:
     name: Files_are_not_created_for_incorrect_name
-    runs-on: windows-latest
+    runs-on: windows-2016
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
