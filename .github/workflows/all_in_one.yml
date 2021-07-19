@@ -4,17 +4,18 @@ on: [workflow_dispatch]
  
 jobs:
 
-#   Extract_data_from_data_properties_file:
-#     name: Exctract_data_from_properties_file
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check out repository
-#         uses: actions/checkout@v2
-#       - name: Assign values from properties file
-#         run: |
-#           pwd
-#           ls
-#           cat data.properties >> $GITHUB_ENV  
+  Extract_data_from_data_properties_file:
+    name: Exctract_data_from_properties_file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Assign values from properties file
+        run: |
+          pwd
+          ls
+          cat data.properties >> $GITHUB_ENV  
+          echo env
       
 
 #   Artifacts_are_generated:           # Test for checking if artifacts are created or not
@@ -37,25 +38,25 @@ jobs:
 #            grep -q testSquare test-results/results.xml        
 #            grep -v sqNums code-coverage/coverage.xml
            
-  Files_are_not_created_for_incorrect_name:
-    name: Files_are_not_created_for_incorrect_name
-    runs-on: windows-2016
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: src
-          test-results-junit: test-results/r?esults.xml
-          code-coverage-cobertura: code-coverage/co?verage.xml
-      - name: Check if artifacts are generated or not
-        run: |
-           set -e
-           grep -q testSquare test-results/r?esults.xml
-           grep -c sqNum code-coverage/co?verage.xml
+#   Files_are_not_created_for_incorrect_name:
+#     name: Files_are_not_created_for_incorrect_name
+#     runs-on: windows-2016
+#     steps:
+#       - name: Check out repository
+#         uses: actions/checkout@v2
+#       - name: Set up MATLAB
+#         uses: matlab-actions/setup-matlab@v1
+#       - name: Run tests and generate artifacts
+#         uses: matlab-actions/run-tests@v1
+#         with:
+#           source-folder: src
+#           test-results-junit: test-results/r?esults.xml
+#           code-coverage-cobertura: code-coverage/co?verage.xml
+#       - name: Check if artifacts are generated or not
+#         run: |
+#            set -e
+#            grep -q testSquare test-results/r?esults.xml
+#            grep -c sqNum code-coverage/co?verage.xml
            
 #   All_test_picked_with_No_test_folder_given:
 #     name: Check_if_all_tests_are_picked_with_no_folder_given
