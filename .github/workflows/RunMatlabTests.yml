@@ -3,22 +3,22 @@ on: [workflow_dispatch]
  
 jobs:
 
-#   Extract_data_from_data_properties_file:
-# #     strategy:
-# #           matrix:
-# #             runner: [ubuntu-latest, ubuntu-18.04]
-#     name: Exctract_data_from_properties_file
-#     runs-on: self-hosted
-#     steps:
-#       - name: Check out repository
-#         uses: actions/checkout@v2
-#       - name: Set up MATLAB                      # Setup the MATLAB
-#         uses: matlab-actions/setup-matlab@v1
-#       - name: Assign values from properties file
-#         run: |
-#           pwd
-#           ls
-#           cat data.properties >> $GITHUB_ENV  
+  Extract_data_from_data_properties_file:
+#     strategy:
+#           matrix:
+#             runner: [ubuntu-latest, ubuntu-18.04]
+    name: Exctract_data_from_properties_file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up MATLAB                      # Setup the MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Assign values from properties file
+        run: |
+          pwd
+          ls
+          cat data.properties >> $GITHUB_ENV  
           
       
 
