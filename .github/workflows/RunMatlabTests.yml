@@ -22,25 +22,25 @@ jobs:
           
       
 
-#   Artifacts_are_generated:           # Test for checking if artifacts are created or not
-#     name: check_if_artifacts_are_generated
-#     runs-on: ${{env.runner}}
-#     steps:
-#       - name: Check out repository               # checkout the repository action
-#         uses: actions/checkout@v2
-#       - name: Set up MATLAB                      # Setup the MATLAB
-#         uses: matlab-actions/setup-matlab@v1
-#       - name: Run tests and generate artifacts   # Run MATLAB tests and generate related artifacts
-#         uses: matlab-actions/run-tests@v1
-#         with:
-#           source-folder: src
-#           test-results-junit: test-results/results.xml
-#           code-coverage-cobertura: code-coverage/coverage.xml
-#       - name: Check if artifacts are generated or not
-#         run: |                                    # Script code for checking that artifacts are created or not
-#            set -e
-#            grep -q testSquare test-results/results.xml        
-#            grep -v sqNums code-coverage/coverage.xml
+  Artifacts_are_generated:           # Test for checking if artifacts are created or not
+    name: check_if_artifacts_are_generated
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository               # checkout the repository action
+        uses: actions/checkout@v2
+      - name: Set up MATLAB                      # Setup the MATLAB
+        uses: matlab-actions/setup-matlab@v1
+      - name: Run tests and generate artifacts   # Run MATLAB tests and generate related artifacts
+        uses: matlab-actions/run-tests@v1
+        with:
+          source-folder: src
+          test-results-junit: test-results/results.xml
+          code-coverage-cobertura: code-coverage/coverage.xml
+      - name: Check if artifacts are generated or not
+        run: |                                    # Script code for checking that artifacts are created or not
+           set -e
+           grep -q testSquare test-results/results.xml        
+           grep -v sqNums code-coverage/coverage.xml
            
 #   # This test will be only run for windows.
 # #   Files_are_not_created_for_incorrect_name:
