@@ -17,7 +17,8 @@ jobs:
           pwd
           ls
           cat data.properties >> $GITHUB_ENV  
-          env
+          MATLAB
+          
       
 
 #   Artifacts_are_generated:           # Test for checking if artifacts are created or not
