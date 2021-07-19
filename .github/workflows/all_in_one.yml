@@ -8,7 +8,7 @@ jobs:
           matrix:
             runner: [ubuntu-latest, ubuntu-18.04]
     name: Exctract_data_from_properties_file
-    runs-on: {{matrix.runner}}
+    runs-on: ${{matrix.runner}}
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
