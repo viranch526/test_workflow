@@ -1,27 +1,7 @@
 name: RUN MATLAB Tests
 on: [workflow_dispatch]
  
-jobs:
-
-  Extract_data_from_data_properties_file:
-#     strategy:
-#           matrix:
-#             runner: [ubuntu-latest, ubuntu-18.04]
-    name: Exctract_data_from_properties_file
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Set up MATLAB                      # Setup the MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      - name: Assign values from properties file
-        run: |
-          pwd
-          ls
-          cat data.properties >> $GITHUB_ENV  
-          
-      
-
+jobs: 
   Artifacts_are_generated:           # Test for checking if artifacts are created or not
     name: check_if_artifacts_are_generated
     runs-on: ubuntu-latest
@@ -42,7 +22,8 @@ jobs:
            grep -q testSquare test-results/results.xml        
            grep -v sqNums code-coverage/coverage.xml
            
-  # This test will be only run for windows.
+  # This test will be only run for windows, so we have to run this on self-hosted windows machine.
+  
 #   Files_are_not_created_for_incorrect_name:
 #     name: Files_are_not_created_for_incorrect_name
 #     runs-on: windows-2016
@@ -238,6 +219,9 @@ jobs:
            grep -c mulNum code-coverage/coverage.xml
            grep -c addNum code-coverage/coverage.xml
            grep -c subnum code-coverage/coverage.xml
+           
+           
+  # Last test case will go here - check if build is done for self hosted runner
 
            
 
