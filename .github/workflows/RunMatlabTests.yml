@@ -1,4 +1,4 @@
-name: All tests in one file
+name: RUN MATLAB Tests
 on: [workflow_dispatch]
  
 jobs:
@@ -63,7 +63,7 @@ jobs:
 #            grep -q testSquare test-results/r?esults.xml
 #            grep -c sqNum code-coverage/co?verage.xml
            
-  All_test_picked_with_No_test_folder_given:
+  All_tests_picked_with_No_test_folder_given:
     name: Check_if_all_tests_are_picked_with_no_folder_given
     runs-on: ubuntu-latest
     steps:
